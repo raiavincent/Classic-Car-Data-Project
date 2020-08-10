@@ -5,6 +5,10 @@ from requests import get
 from bs4 import BeautifulSoup
 import pandas as pd
 import numpy as np
+from selenium import webdriver
+
+driver = webdriver.Chrome()
+driver.get('https://www.classicbid.de/vehicle-type/convertible/')
 
 headers = {"Accept-Language": "en-us, en;q=0.5"}
 
