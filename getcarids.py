@@ -5,28 +5,24 @@ from requests import get
 from bs4 import BeautifulSoup
 import pandas as pd
 import numpy as np
-from selenium import webdriver
 
-driver = webdriver.Chrome()
-driver.get('https://www.classicbid.de/vehicle-type/convertible/')
-
+url = "https://www.glenmarch.com/auctions/results/1103"
 headers = {"Accept-Language": "en-us, en;q=0.5"}
-
-url = "https://www.classicbid.de/vehicle-type/convertible/"
-
 results  = requests.get(url,headers=headers)
 
 soup = BeautifulSoup(results.text, "html.parser")
 
-print(soup.prettify())
-
 # Create the empty lists for data storage.
 
-idnumber = []
+lotname = []
 
-car_div = soup.find_all('div', class_='single-vehicle-view view-list')
+car_div = soup.find_all('div', class_='col-md-12 col-sm-12 car-padding car-item car_auction_row_item')
 
 # For loop to pull from all of the div containers.
 
 for container in car_div:
-    carid = container.find('p', class_='btn-car-id').text
+    carname = container.find('font', class_='vertical-align: inherit;')
+    lotname.append(carname)
+
+print(lotname)
+
