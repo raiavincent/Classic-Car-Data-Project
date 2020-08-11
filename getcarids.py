@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import numpy as np
 
-url = "https://www.glenmarch.com/auctions/results/1103"
+url = "https://www.glenmarch.com/auctions/results/1103?limit=9999"
 headers = {"Accept-Language": "en-us, en;q=0.5"}
 results  = requests.get(url,headers=headers)
 
